@@ -1,6 +1,6 @@
 # Capacitor Biometric Auth
 
-[![Build Status](https://travis-ci.org/arielhernandezmusa/capacitor-biometric.svg?branch=master)](https://travis-ci.org/arielhernandezmusa/capacitor-biometric)
+[![Build Status](https://travis-ci.org/arielhernandezmusa/capacitor-biometric-auth.svg?branch=master)](https://travis-ci.org/arielhernandezmusa/capacitor-biometric-auth)
 
 ## Installation
 
