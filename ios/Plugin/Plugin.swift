@@ -60,7 +60,7 @@ public class BiometricAuth: CAPPlugin {
         let reasonString = "To access the secure data"
         localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reasonString) { success, evaluateError in
             if success {
-                call.resolve()
+                call.resolve(["verified": true])
             } else {
                 var errorCode = 0
                 guard let error = evaluateError else {

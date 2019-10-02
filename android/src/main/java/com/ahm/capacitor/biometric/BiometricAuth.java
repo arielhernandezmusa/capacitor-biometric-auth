@@ -130,7 +130,7 @@ public class BiometricAuth extends Plugin {
             public void onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
                 JSObject ret = new JSObject();
-                ret.put("auth", true);
+                ret.put("verified", true);
                 call.resolve(ret);
             }
         };
