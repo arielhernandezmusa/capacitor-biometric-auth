@@ -17,7 +17,7 @@ const { BiometricAuth } = Plugins;
 const available = await BiometricAuth.isAvailable()
 
 if (available.has) {
-  const authResult = await BiometricAuth.verify()
+  const authResult = await BiometricAuth.verify({...})
   if (authResult.verified) {
     // success authentication
   } else {
@@ -27,3 +27,60 @@ if (available.has) {
   // biometric not available
 }
  ```
+ 
+
+ ## Methods
+
+ #### verify(options)
+ Open biometric popup
+ |option|values|decription|
+ |-|-|-|
+ |reason|any string|Popup label|
+
+ ```ts
+const result = await BiometricAuth.verify({reason: "Message ..."})
+```
+
+**result**
+```json
+{
+  verified: true // true if biometric auth was succes or false otherwise,
+  status: {} // an object with errors matching biometric auth fails (on if verified === false)
+}
+```
+
+**status**
+
+|error|description|
+|-|-|
+| 10 | The user failed to provide valid credentials |
+| 11 | Authentication was cancelled by application |
+| 12 | The context is invalid |
+| 13 | Not interactive |
+| 14 | Passcode is not set on the device |
+| 15 | Authentication was cancelled by the system |
+| 16 | The user did cancel |
+| 17 | The user chose to use the fallback |
+
+### isAvailable()
+
+Checks if biometric is enabled
+
+```ts
+const result = await BiometricAuth.isAvailable()
+```
+
+**result**
+```json
+{
+  has: true, // true if has biometric auth enabled, false otherwise
+  status: {...} // an object with errors
+}
+```
+
+**status**
+|error|description|
+|-|-|
+| 1 | Biometric not available |
+| 2 | Authentication could not continue because the user has been locked out of biometric authentication, due to failing authentication too many times.|
+| 3 | Authentication could not start because the user has not enrolled in biometric authentication.|

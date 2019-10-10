@@ -57,7 +57,7 @@ public class BiometricAuth: CAPPlugin {
     
     @objc func verify(_ call: CAPPluginCall) {
         let localAuthenticationContext = LAContext()
-        let reasonString = "To access the secure data"
+        let reasonString = call.getString("reason") ?? "To access the secure data"
         localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reasonString) { success, evaluateError in
             if success {
                 call.resolve(["verified": true])
