@@ -33,16 +33,17 @@ if (available.has) {
 
  #### verify(options)
  Open biometric popup
- |option|values|decription|
- |-|-|-|
- |reason|any string|Popup label|
+ 
+ | option | values | decription |
+ | --- | --- | --- |
+ | reason | any string | Popup label |
 
  ```ts
 const result = await BiometricAuth.verify({reason: "Message ..."})
 ```
 
 **result**
-```json
+```javascript
 {
   verified: true // true if biometric auth was succes or false otherwise,
   status: {} // an object with errors matching biometric auth fails (on if verified === false)
@@ -71,7 +72,7 @@ const result = await BiometricAuth.isAvailable()
 ```
 
 **result**
-```json
+```javascript
 {
   has: true, // true if has biometric auth enabled, false otherwise
   status: {...} // an object with errors
@@ -79,6 +80,7 @@ const result = await BiometricAuth.isAvailable()
 ```
 
 **status**
+
 |error|description|
 |-|-|
 | 1 | Biometric not available |
