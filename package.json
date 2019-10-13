@@ -41,9 +41,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/arielhernandezmusa/capacitor-biometric.git"
+    "url": "https://github.com/arielhernandezmusa/capacitor-biometric-auth.git"
   },
   "bugs": {
-    "url": "https://github.com/arielhernandezmusa/capacitor-biometric.git/issues"
+    "url": "https://github.com/arielhernandezmusa/capacitor-biometric-auth.git/issues"
   }
 }
