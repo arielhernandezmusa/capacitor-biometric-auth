@@ -1,6 +1,6 @@
 {
   "name": "capacitor-biometric-auth",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Complete",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
