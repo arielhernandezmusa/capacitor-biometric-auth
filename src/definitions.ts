@@ -4,6 +4,22 @@ declare module "@capacitor/core" {
   }
 }
 
+export interface ErrorCode {
+  error: number;
+  description: string;
+}
+
+export interface AvailableOptions {
+  has: boolean;
+  status: ErrorCode;
+}
+
+export interface VerifyOptions {
+  verified: boolean;
+  status: ErrorCode;
+}
+
 export interface BiometricAuthPlugin {
-  echo(options: { value: string }): Promise<{value: string}>;
+  isAvailable(): Promise<AvailableOptions>;
+  verify(options: { reason: string }): Promise<VerifyOptions>;
 }
