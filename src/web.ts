@@ -1,5 +1,5 @@
 import { WebPlugin } from '@capacitor/core';
-import { BiometricAuthPlugin } from './definitions';
+import { AvailableOptions, VerifyOptions, BiometricAuthPlugin } from './definitions';
 
 export class BiometricAuthWeb extends WebPlugin implements BiometricAuthPlugin {
   constructor() {
@@ -9,9 +9,13 @@ export class BiometricAuthWeb extends WebPlugin implements BiometricAuthPlugin {
     });
   }
 
-  async echo(options: { value: string }): Promise<{value: string}> {
-    console.log('ECHO', options);
-    return options;
+  async isAvailable(): Promise<AvailableOptions> {
+    return new Promise(() => {});
+  }
+
+  async verify(options: { reason: string }): Promise<VerifyOptions> {
+    console.log('OPTIONS', options)
+    return new Promise(() => {});
   }
 }
 
