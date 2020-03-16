@@ -52,7 +52,7 @@ public class BiometricAuth extends Plugin {
                 .setTitle(call.getString("title", "Biometric"))
                 .setSubtitle(call.getString("subTitle", "Authentication is required to continue"))
                 .setDescription(call.getString("description", "This app uses biometric authentication to protect your data."))
-                .setNegativeButton("Cancel", context.getMainExecutor(), new DialogInterface.OnClickListener() {
+                .setNegativeButton(call.getString("cancel", "Cancel"), context.getMainExecutor(), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         call.reject("failed");
