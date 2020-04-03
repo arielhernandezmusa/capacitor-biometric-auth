@@ -36,7 +36,11 @@ if (available.has) {
  
  | option | values | decription |
  | --- | --- | --- |
- | reason | any string | Popup label |
+ | reason | any string | Popup label for iOS|
+ | title | any string | Title of prompt in Android |
+ | subTitle | any string | Subtitle of prompt in Android |
+ | description | any string | Description of prompt in Android |
+ | cancel | any string | Text for cancel button on prompt in Android |
 
  ```ts
 const result = await BiometricAuth.verify({reason: "Message ..."})
