@@ -97,7 +97,7 @@ public class BiometricAuth: CAPPlugin {
                 }
                 
                 
-                call.reject("Auth failed", nil, ["verified": false, "status": errorCode])
+                call.reject("Auth failed", nil, nil, ["verified": false, "status": errorCode])
             }
         }
     }
