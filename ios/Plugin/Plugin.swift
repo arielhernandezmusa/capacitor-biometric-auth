@@ -96,7 +96,6 @@ public class BiometricAuth: CAPPlugin {
                     errorCode = self.evaluatePolicyFailErrorMessageForLA(errorCode: error._code)
                 }
                 
-                
                 call.reject("Auth failed", nil, ["verified": false, "status": errorCode] as? Error)
             }
         }
