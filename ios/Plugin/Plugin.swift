@@ -58,7 +58,7 @@ public class BiometricAuth: CAPPlugin {
     @objc func verify(_ call: CAPPluginCall) {
         let localAuthenticationContext = LAContext()
         let reasonString = call.getString("reason") ?? "To access the secure data"
-        localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reasonString) { success, evaluateError in
+        localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reasonString) { success, evaluateError in
             if success {
                 call.resolve(["verified": true])
             } else {
@@ -97,7 +97,7 @@ public class BiometricAuth: CAPPlugin {
                 }
                 
                 
-                call.reject("Auth failed", nil, ["verified": false, "status": errorCode])
+                call.reject("Auth failed", nil, ["verified": false, "status": errorCode] as? Error)
             }
         }
     }
