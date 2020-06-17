@@ -7,6 +7,25 @@
 * `npm i capacitor-biometric-auth`
 * `yarn add capacitor-biometric-auth`
 
+## Setup
+Don't for get to run ```npx cap sync``` before doing the next steps.
+
+### Android
+To get android working please add this code to your MainActivity file.
+
+> MainActivity.java
+```diff
+++ import com.ahm.capacitor.biometric.BiometricAuth;
+
+this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
+++ add(BiometricAuth.class);
+}});
+```
+
+### IOS
+
+@TODO
+
 ## Usage
 
 ```ts
@@ -27,13 +46,13 @@ if (available.has) {
   // biometric not available
 }
  ```
- 
+
 
  ## Methods
 
  #### verify(options)
  Open biometric popup
- 
+
  | option | values | decription |
  | --- | --- | --- |
  | reason | any string | Popup label for iOS|
