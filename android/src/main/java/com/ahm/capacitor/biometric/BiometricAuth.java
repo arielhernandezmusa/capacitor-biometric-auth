@@ -48,17 +48,27 @@ public class BiometricAuth extends Plugin {
     private void displayBiometricPrompt(final PluginCall call) {
         Context context = getContext();
 
-        BiometricPrompt biometricPrompt = new BiometricPrompt.Builder(context)
-                .setTitle(call.getString("title", "Biometric"))
-                .setSubtitle(call.getString("subTitle", "Authentication is required to continue"))
-                .setDescription(call.getString("description", "This app uses biometric authentication to protect your data."))
-                .setNegativeButton(call.getString("cancel", "Cancel"), context.getMainExecutor(), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        call.reject("failed");
-                    }
-                })
-                .build();
+        BiometricPrompt biometricPrompt = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q && call.getBoolean("deviceCredentialAllowed", false) == true) {
+            biometricPrompt = new BiometricPrompt.Builder(context)
+                    .setTitle(call.getString("title", "Biometric"))
+                    .setSubtitle(call.getString("subTitle", "Authentication is required to continue"))
+                    .setDescription(call.getString("description", "This app uses biometric authentication to protect your data."))
+                    .setDeviceCredentialAllowed(true)
+                    .build();
+        } else {
+            biometricPrompt = new BiometricPrompt.Builder(context)
+                    .setTitle(call.getString("title", "Biometric"))
+                    .setSubtitle(call.getString("subTitle", "Authentication is required to continue"))
+                    .setDescription(call.getString("description", "This app uses biometric authentication to protect your data."))
+                    .setNegativeButton(call.getString("cancel", "Cancel"), context.getMainExecutor(), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            call.reject("failed");
+                        }
+                    })
+                    .build();
+        }
         biometricPrompt.authenticate(getCancellationSignal(call), context.getMainExecutor(), getAuthenticationCallback(call));
     }
 

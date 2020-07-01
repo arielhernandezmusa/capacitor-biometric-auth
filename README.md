@@ -60,6 +60,7 @@ if (available.has) {
  | subTitle | any string | Subtitle of prompt in Android |
  | description | any string | Description of prompt in Android |
  | cancel | any string | Text for cancel button on prompt in Android |
+ | deviceCredentialAllowed | boolean | Allows fallback to PIN/Password/Pattern
 
  ```ts
 const result = await BiometricAuth.verify({reason: "Message ..."})
