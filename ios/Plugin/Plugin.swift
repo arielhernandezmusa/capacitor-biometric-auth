@@ -63,7 +63,6 @@ public class BiometricAuth: CAPPlugin {
             if success {
                 call.resolve(["verified": true])
             } else {
-                
                 localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reasonString) { success, evaluateError in
                     if success {
                         call.resolve(["verified": true])
@@ -102,7 +101,7 @@ public class BiometricAuth: CAPPlugin {
                             errorCode = self.evaluatePolicyFailErrorMessageForLA(errorCode: error._code)
                         }
                         
-                        call.reject("Auth failed", nil, ["verified": false, "status": errorCode] as? Error)
+                        call.reject("Auth failed", nil, nil, ["verified": false, "status": errorCode] as? Error)
                     }
                 }
             }
