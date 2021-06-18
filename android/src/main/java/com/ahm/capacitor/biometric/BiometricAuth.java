@@ -97,6 +97,13 @@ public class BiometricAuth extends Plugin {
                 | CertificateException | IOException e) {
             return false;
         }
+
+        try {
+          Class.forName("android.hardware.biometrics.BiometricPrompt");
+        } catch (Throwable t) {
+          return false;
+        }
+
         return true;
 
     }
